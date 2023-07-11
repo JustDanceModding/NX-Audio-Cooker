@@ -9,7 +9,7 @@ for audio in os.listdir("input/"):
     print(audio)
     os.makedirs("temp", exist_ok=True)
     ckd = audio.split(".")[0] + ".wav.ckd"
-    os.system(F'ffmpeg.exe "input\\{audio}" -f wav -bitexact -acodec pcm_s16le -ar 48000 -ac 2 -loglevel quiet "temp/temp.wav"')
+    os.system(F'ffmpeg.exe -i "input\\{audio}" -f wav -bitexact -acodec pcm_s16le -ar 48000 -ac 2 -loglevel quiet "temp/temp.wav"')
 
     with open(f"output/{ckd}", "wb") as output:
         with open(f"temp/temp.wav", "rb") as wav:
